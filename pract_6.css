@@ -11,7 +11,7 @@ body {
   font-size: 1.25rem;
 }
 
-div {
+.container {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
@@ -24,16 +24,34 @@ img {
   object-fit: cover;
   border-radius: 8px;
   transition: 0.2s;
-  cursor: pointer;
 }
 
-img:hover {
+button {
+  outline: none;
+  border: 0;
+  background: inherit;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.container img:hover {
   transform: scale(1.05);
 }
 
-a {
-  display: block;
-  text-decoration: none;
-  color: black;
-  text-align: center;
+.container img:active {
+  transform: scale(0.95);
+}
+
+#popup {
+  position: fixed;
+  display: grid;
+  place-content: center;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+
+#popup img {
+  width: 40vw;
 }
