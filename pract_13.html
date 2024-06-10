@@ -33,8 +33,10 @@
       <fieldset>
         <label for="d">DD: </label>
         <input data-max="2" data-min="1" type="number" id="d" />
+        <br />
         <label for="m">MM: </label>
         <input data-max="2" data-min="1" type="number" id="m" />
+        <br />
         <label for="y">YYYY: </label>
         <input data-max="4" data-min="4" type="number" id="y" />
       </fieldset>
@@ -85,13 +87,13 @@
           if (max && String(input.value).length > max)
             return {
               valid: false,
-              msg: `${input.labels[0].textContent} Max length is ${max}`,
+              msg: `${input.labels[0].textContent} Maximum length is ${max}`,
             }
           return { valid: true }
         }
         return {
           valid: false,
-          msg: `${input.labels[0].textContent} Min length is ${min}`,
+          msg: `${input.labels[0].textContent} Minimum length is ${min}`,
         }
       }
     </script>

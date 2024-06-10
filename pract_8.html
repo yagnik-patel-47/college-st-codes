@@ -21,8 +21,8 @@
         const input = String(form.children[0].value)
         const reverse = input.split('').reverse().join('')
         if (input === '') return (output.textContent = 'Enter input!')
-        if (input === reverse) output.textContent = 'Input is Palindrome'
-        else output.textContent = 'Input is not Palindrome'
+        if (input === reverse) output.textContent = `${input} is Palindrome`
+        else output.textContent = `${input} is not Palindrome`
       })
     </script>
   </body>
