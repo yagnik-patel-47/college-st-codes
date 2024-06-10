@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practical 12</title>
+  </head>
+  <body>
+    <h1 style="text-align: center">Practical 12</h1>
+    <p></p>
+
+    <script>
+      const heading = document.querySelector('h1')
+
+      heading.addEventListener(
+        'mouseenter',
+        () => (heading.style.background = 'red')
+      )
+      heading.addEventListener(
+        'mouseleave',
+        () => (heading.style.background = 'blue')
+      )
+
+      window.addEventListener('beforeunload', (e) => {
+        e.preventDefault()
+        e.returnValue = 'Please dont go!'
+      })
+    </script>
+  </body>
+</html>

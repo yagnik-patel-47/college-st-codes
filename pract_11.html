@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practical 11</title>
+  </head>
+  <body>
+    <h1>Practical 11</h1>
+    <p></p>
+
+    <script>
+      const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+      const output = document.querySelector('p')
+      window.addEventListener('keydown', (e) => {
+        output.innerHTML = ''
+        document.body.style.background = 'white'
+        if (vowels.includes(e.key))
+          output.innerHTML += 'vowel is pressed <br />'
+        output.innerHTML += `key: ${e.key} <br />`
+        output.innerHTML += `key code: ${e.keyCode}`
+      })
+
+      window.addEventListener('keyup', () => {
+        document.body.style.background = '#f87171'
+      })
+    </script>
+  </body>
+</html>

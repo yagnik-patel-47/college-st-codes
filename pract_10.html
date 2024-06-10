@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practical 10</title>
+  </head>
+  <body>
+    <h1>Practical 10</h1>
+    <p style="text-align: center; width: fit-content"></p>
+
+    <script>
+      const output = document.querySelector('p')
+      for (let i = 0; i < 5; i++) {
+        for (let j = 0; j <= i; j++) {
+          output.innerHTML +=
+            i % 2 === 0 ? (j % 2 === 0 ? '1' : '0') : j % 2 === 0 ? '0' : '1'
+        }
+        output.innerHTML += '<br />'
+      }
+    </script>
+  </body>
+</html>

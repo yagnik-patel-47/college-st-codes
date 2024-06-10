@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practical 8</title>
+  </head>
+  <body>
+    <h1>Practical 8</h1>
+    <form>
+      <input type="text" />
+      <input type="submit" value="Check Palindrome" />
+    </form>
+    <p></p>
+
+    <script>
+      const form = document.forms[0]
+      const output = document.querySelector('p')
+      form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const input = String(form.children[0].value)
+        const reverse = input.split('').reverse().join('')
+        if (input === '') return (output.textContent = 'Enter input!')
+        if (input === reverse) output.textContent = 'Input is Palindrome'
+        else output.textContent = 'Input is not Palindrome'
+      })
+    </script>
+  </body>
+</html>

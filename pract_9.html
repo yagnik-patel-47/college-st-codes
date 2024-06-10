@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practical 9</title>
+  </head>
+  <body>
+    <h1>Practical 9</h1>
+    <p>searching words are --- wtf, fuck, asshole, titties</p>
+    <form>
+      <label for="words">Enter sentence</label>
+      <input id="words" type="text" />
+      <input type="submit" value="Check Words" />
+    </form>
+    <p></p>
+
+    <script>
+      const searchingWords = ['wtf', 'fuck', 'asshole', 'titties']
+      const form = document.forms[0]
+      const output = document.querySelectorAll('p')[1]
+      form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        output.innerHTML = ''
+        const input = String(form.children[1].value)
+        const words = input.split(' ')
+        if (input === '') return (output.textContent = 'Enter input!')
+        if (words.every((word) => !searchingWords.includes(word)))
+          return (output.textContent = 'No searching word found!')
+        for (const index in words) {
+          if (searchingWords.includes(words[index]))
+            output.innerHTML += `<p>found ${words[index]} at index ${index}</p>`
+        }
+      })
+    </script>
+  </body>
+</html>

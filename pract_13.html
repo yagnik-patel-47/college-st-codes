@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practical 13</title>
+  </head>
+  <body>
+    <h1>Practical 13</h1>
+    <form>
+      <fieldset>
+        <label for="name">Name: </label>
+        <input type="text" id="name" />
+      </fieldset>
+      <fieldset>
+        <label for="pass">Password: </label>
+        <input
+          data-check-capital="true"
+          data-max="12"
+          data-min="8"
+          type="password"
+          id="pass"
+        />
+      </fieldset>
+      <fieldset>
+        <label for="phone">Phone No: </label>
+        <input data-max="10" data-min="10" id="phone" type="number" />
+      </fieldset>
+      <fieldset>
+        <label for="mail">Email: </label>
+        <input type="email" id="mail" />
+      </fieldset>
+      <fieldset>
+        <label for="d">DD: </label>
+        <input data-max="2" data-min="1" type="number" id="d" />
+        <label for="m">MM: </label>
+        <input data-max="2" data-min="1" type="number" id="m" />
+        <label for="y">YYYY: </label>
+        <input data-max="4" data-min="4" type="number" id="y" />
+      </fieldset>
+      <fieldset>
+        <label for="pin">Pincode: </label>
+        <input data-max="6" data-min="6" type="number" id="pin" />
+      </fieldset>
+      <input type="submit" value="Submit" />
+    </form>
+    <p></p>
+
+    <script>
+      const form = document.forms[0]
+      const output = document.querySelector('p')
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        const inputs = Array.from(form.querySelectorAll('input'))
+        inputs.pop()
+        const errors = []
+
+        inputs.forEach((input) => {
+          const test = validate(
+            input,
+            input.dataset.min ? parseInt(input.dataset.min) : undefined,
+            input.dataset.max ? parseInt(input.dataset.max) : undefined
+          )
+
+          if (!test.valid) errors.push(test)
+        })
+
+        if (errors.length) output.innerHTML = errors[0].msg
+        else output.innerHTML = 'Form submitted without errors'
+      })
+
+      function validate(input, min = 1, max) {
+        if (
+          !!String(input.value).length &&
+          input.dataset.checkCapital &&
+          String(input.value) === String(input.value).toLowerCase()
+        )
+          return {
+            valid: false,
+            msg: `${input.labels[0].textContent} Have atleast one capital letter.`,
+          }
+
+        if (String(input.value).length >= min) {
+          if (max && String(input.value).length > max)
+            return {
+              valid: false,
+              msg: `${input.labels[0].textContent} Max length is ${max}`,
+            }
+          return { valid: true }
+        }
+        return {
+          valid: false,
+          msg: `${input.labels[0].textContent} Min length is ${min}`,
+        }
+      }
+    </script>
+  </body>
+</html>
