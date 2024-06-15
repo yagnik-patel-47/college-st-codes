@@ -68,8 +68,11 @@
           if (!test.valid) errors.push(test)
         })
 
-        if (errors.length) output.innerHTML = errors[0].msg
-        else output.innerHTML = 'Form submitted without errors'
+        if (errors.length)
+          output.innerHTML = `<span style="color: red;">${errors[0].msg}</span>`
+        else
+          output.innerHTML =
+            '<span style="color: green;">Form submitted without errors</span>'
       })
 
       function validate(input, min = 1, max) {
